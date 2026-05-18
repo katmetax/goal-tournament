@@ -4,7 +4,7 @@
       {
         "matcher": "",
         "hooks": [
-          { "type": "command", "command": "npx tsc --noEmit && npx vitest run" }
+          { "type": "command", "command": "npx tsc --noEmit && npx eslint . && npx oxfmt src/ && npx vitest run" }
         ]
       }
     ]
