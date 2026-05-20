@@ -44,13 +44,4 @@ describe('ModeCard', () => {
     const wrapper = mount(ModeCard, { props: { idx: 0, mode } })
     expect(wrapper.find('button.mode-card').exists()).toBe(true)
   })
-
-  it('should apply a rotation transform to preview chips', () => {
-    const wrapper = mount(ModeCard, { props: { idx: 0, mode } })
-    const chips = wrapper.findAll('.preview-chip')
-    // middle chip (j=1) gets rotate(0deg), first (j=0) gets rotate(-2deg)
-    expect(chips[0]!.attributes('style')).toContain('rotate(-2deg)')
-    expect(chips[1]!.attributes('style')).toContain('rotate(0deg)')
-    expect(chips[2]!.attributes('style')).toContain('rotate(2deg)')
-  })
 })

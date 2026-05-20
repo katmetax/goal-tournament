@@ -10,7 +10,6 @@ defineEmits<{ click: [] }>()
 <template>
   <button
     :class="['circle-btn', `circle-btn--${kind}`]"
-    :style="{ '--kind-color': kind === 'keep' ? 'var(--keep)' : 'var(--pass)' }"
     :aria-label="kind === 'keep' ? 'Keep' : 'Pass'"
   >
     {{ kind === 'keep' ? '✓' : '✕' }}
@@ -18,6 +17,14 @@ defineEmits<{ click: [] }>()
 </template>
 
 <style scoped>
+.circle-btn--keep {
+  --kind-color: var(--keep);
+}
+
+.circle-btn--pass {
+  --kind-color: var(--pass);
+}
+
 .circle-btn {
   all: unset;
   width: 64px;

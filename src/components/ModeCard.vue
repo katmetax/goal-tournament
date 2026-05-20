@@ -37,7 +37,6 @@ const labelColor = computed(() => colorForCard(props.idx * 3 + 1))
         :style="{
           background: colorForCard(idx * 3 + j).bg,
           color: colorForCard(idx * 3 + j).ink,
-          transform: `rotate(${(j - 1) * 2}deg)`,
         }"
       >
         {{ p }}
@@ -121,5 +120,13 @@ const labelColor = computed(() => colorForCard(props.idx * 3 + 1))
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 100px;
+}
+
+.preview-chip:nth-child(1) {
+  transform: rotate(-2deg);
+}
+
+.preview-chip:nth-child(3) {
+  transform: rotate(2deg);
 }
 </style>

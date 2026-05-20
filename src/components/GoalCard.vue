@@ -29,83 +29,97 @@ const props = withDefaults(defineProps<Props>(), {
   dragging: false,
 })
 
-const SIZES = {
-  sm: { w: 200, h: 130, font: 22, pad: 18 },
-  md: { w: 300, h: 200, font: 28, pad: 22 },
-  lg: { w: 360, h: 260, font: 36, pad: 28 },
-  xl: { w: 420, h: 540, font: 52, pad: 36 },
-}
-
-const sz = computed(() => SIZES[props.size])
 const color = computed(() => colorForCard(props.idx))
 
 const cardStyle = computed(() => ({
-  width: `${sz.value.w}px`,
-  height: `${sz.value.h}px`,
-  borderRadius: 'var(--card-radius)',
-  padding: `${sz.value.pad}px`,
   background: color.value.bg,
   color: color.value.ink,
-  boxShadow: props.flat ? 'none' : 'var(--card-shadow)',
-  backgroundImage:
-    'radial-gradient(circle at 100% 0%, rgba(255,255,255,.4), transparent 40%), radial-gradient(circle at 0% 100%, rgba(0,0,0,.05), transparent 40%)',
-  position: 'relative' as const,
-  display: 'flex',
-  flexDirection: 'column' as const,
-  justifyContent: 'flex-end',
-  fontFamily: 'var(--font-display)',
-  fontSize: `${sz.value.font}px`,
-  fontWeight: '600',
-  lineHeight: '1.05',
-  letterSpacing: '-0.01em',
-  textWrap: 'balance',
   transform: `translate(${props.dragX}px, ${props.dragY}px) rotate(${props.rotation}deg)`,
-  transition: props.dragging ? 'none' : 'transform .3s cubic-bezier(.2,.7,.2,1.2), box-shadow .2s',
-  userSelect: 'none' as const,
-  overflow: 'hidden',
 }))
-
-const stampStyle = computed(() => {
-  if (!props.stamp) return null
-  const isKeep = props.stamp.kind === 'keep'
-  const color = isKeep ? 'var(--keep)' : 'var(--pass)'
-  return {
-    position: 'absolute' as const,
-    ...(isKeep ? { top: '28px', left: '24px' } : { top: '28px', right: '24px' }),
-    transform: `rotate(${isKeep ? -18 : 18}deg)`,
-    border: `4px solid ${color}`,
-    color,
-    padding: '6px 18px',
-    fontFamily: 'var(--font-mono)',
-    fontSize: '28px',
-    fontWeight: '800',
-    letterSpacing: '0.12em',
-    borderRadius: '6px',
-    opacity: props.stamp.opacity,
-    pointerEvents: 'none' as const,
-    background: 'rgba(255,255,255,.15)',
-    zIndex: 3,
-  }
-})
 </script>
 
 <template>
-  <div class="goal-card" :style="cardStyle">
+  <div class="goal-card" :class="[`size-${size}`, { flat, dragging }]" :style="cardStyle">
     <div class="card-index">nº{{ String(idx + 1).padStart(2, '0') }}</div>
     <div class="card-title">{{ title }}</div>
-    <div v-if="stamp" :style="stampStyle">{{ stamp.kind === 'keep' ? 'KEEP' : 'PASS' }}</div>
+    <div
+      v-if="stamp"
+      class="stamp"
+      :class="`stamp-${stamp.kind}`"
+      :style="{ opacity: stamp.opacity }"
+    >
+      {{ stamp.kind === 'keep' ? 'KEEP' : 'PASS' }}
+    </div>
   </div>
 </template>
 
 <style scoped>
 .goal-card {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  background-image:
+    radial-gradient(circle at 100% 0%, rgba(255, 255, 255, 0.4), transparent 40%),
+    radial-gradient(circle at 0% 100%, rgba(0, 0, 0, 0.05), transparent 40%);
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  user-select: none;
+  overflow: hidden;
+  transition:
+    transform 0.3s cubic-bezier(0.2, 0.7, 0.2, 1.2),
+    box-shadow 0.2s;
+}
+
+.goal-card.flat {
+  box-shadow: none;
+}
+
+.goal-card.dragging {
+  transition: none;
+}
+
+.size-sm {
+  --pad: 18px;
+  width: 200px;
+  height: 130px;
+  font-size: 22px;
+}
+
+.size-md {
+  --pad: 22px;
+  width: 300px;
+  height: 200px;
+  font-size: 28px;
+}
+
+.size-lg {
+  --pad: 28px;
+  width: 360px;
+  height: 260px;
+  font-size: 36px;
+}
+
+.size-xl {
+  --pad: 36px;
+  width: 420px;
+  height: 540px;
+  font-size: 52px;
+}
+
+.goal-card {
+  padding: var(--pad, 22px);
 }
 
 .card-index {
   position: absolute;
-  top: v-bind("sz.pad + 'px'");
-  left: v-bind("sz.pad + 'px'");
+  top: var(--pad, 22px);
+  left: var(--pad, 22px);
   font-family: var(--font-mono);
   font-size: 11px;
   opacity: 0.55;
@@ -116,5 +130,34 @@ const stampStyle = computed(() => {
 .card-title {
   position: relative;
   z-index: 1;
+}
+
+.stamp {
+  position: absolute;
+  top: 28px;
+  padding: 6px 18px;
+  border: 4px solid;
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  background: rgba(255, 255, 255, 0.15);
+  pointer-events: none;
+  z-index: 3;
+}
+
+.stamp-keep {
+  left: 24px;
+  transform: rotate(-18deg);
+  color: var(--keep);
+  border-color: var(--keep);
+}
+
+.stamp-pass {
+  right: 24px;
+  transform: rotate(18deg);
+  color: var(--pass);
+  border-color: var(--pass);
 }
 </style>

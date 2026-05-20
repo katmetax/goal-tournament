@@ -125,12 +125,7 @@ onUnmounted(() => window.removeEventListener('keydown', onKeyDown))
     <div class="top-bar">
       <span class="eyebrow">Step 02 · Swipe phase</span>
       <SwipeProgress :current="idx" :total="total" :kept="kept.length" />
-      <AppBtn
-        kind="ghost"
-        :disabled="!history.length"
-        :style="{ opacity: history.length ? 1 : 0.35, padding: '8px 14px', fontSize: '13px' }"
-        @click="undo"
-      >
+      <AppBtn class="undo-btn" kind="ghost" :disabled="!history.length" @click="undo">
         ↶ Undo
       </AppBtn>
     </div>
@@ -151,7 +146,6 @@ onUnmounted(() => window.removeEventListener('keydown', onKeyDown))
             transform: `translateY(${offset * 12}px) scale(${1 - offset * 0.04})`,
             zIndex: 10 - offset,
             pointerEvents: offset === 0 && !flying ? 'auto' : 'none',
-            touchAction: 'none',
             cursor: offset === 0 ? (drag.dragging ? 'grabbing' : 'grab') : 'default',
           }"
           v-bind="
@@ -227,6 +221,12 @@ onUnmounted(() => window.removeEventListener('keydown', onKeyDown))
 
 .card-wrapper {
   position: absolute;
+  touch-action: none;
+}
+
+.undo-btn {
+  padding: 8px 14px;
+  font-size: 13px;
 }
 
 .swipe-hint {

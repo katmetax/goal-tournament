@@ -70,14 +70,7 @@ function handleRestart() {
       "
     />
 
-    <div
-      class="trophy-grid"
-      :style="{
-        gridTemplateColumns:
-          count === 1 ? 'minmax(380px, 1fr)' : 'repeat(auto-fit, minmax(260px, 1fr))',
-        maxWidth: count === 1 ? '440px' : '1080px',
-      }"
-    >
+    <div class="trophy-grid" :class="{ single: count === 1 }">
       <TrophyCard
         v-for="(title, i) in winners"
         :key="i"
@@ -127,11 +120,18 @@ function handleRestart() {
 
 .trophy-grid {
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  max-width: 1080px;
   gap: 22px;
   width: 100%;
   justify-items: center;
   position: relative;
   z-index: 1;
+}
+
+.trophy-grid.single {
+  grid-template-columns: minmax(380px, 1fr);
+  max-width: 440px;
 }
 
 .actions {

@@ -62,25 +62,21 @@ describe('GoalCard', () => {
 
   it('should use size md dimensions by default', () => {
     const wrapper = mount(GoalCard, { props: { title: 'Goal', idx: 0 } })
-    const style = wrapper.find('.goal-card').attributes('style')
-    expect(style).toContain('width: 300px')
-    expect(style).toContain('height: 200px')
+    expect(wrapper.find('.goal-card').classes()).toContain('size-md')
   })
 
   it('should apply correct dimensions for xl size', () => {
     const wrapper = mount(GoalCard, { props: { title: 'Goal', idx: 0, size: 'xl' } })
-    const style = wrapper.find('.goal-card').attributes('style')
-    expect(style).toContain('width: 420px')
-    expect(style).toContain('height: 540px')
+    expect(wrapper.find('.goal-card').classes()).toContain('size-xl')
   })
 
   it('should use no box-shadow when flat is true', () => {
     const wrapper = mount(GoalCard, { props: { title: 'Goal', idx: 0, flat: true } })
-    expect(wrapper.find('.goal-card').attributes('style')).toContain('box-shadow: none')
+    expect(wrapper.find('.goal-card').classes()).toContain('flat')
   })
 
   it('should set transition to none while dragging', () => {
     const wrapper = mount(GoalCard, { props: { title: 'Goal', idx: 0, dragging: true } })
-    expect(wrapper.find('.goal-card').attributes('style')).toContain('transition: none')
+    expect(wrapper.find('.goal-card').classes()).toContain('dragging')
   })
 })
