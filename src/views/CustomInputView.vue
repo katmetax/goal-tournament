@@ -164,5 +164,10 @@ function handleSubmit() {
   .grid {
     grid-template-columns: 1fr;
   }
+
+  .textarea,
+  .preview-panel {
+    min-height: 160px;
+  }
 }
 </style>

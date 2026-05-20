@@ -106,10 +106,10 @@ const cardStyle = computed(() => ({
 }
 
 .size-xl {
-  --pad: 36px;
-  width: 420px;
-  height: 540px;
-  font-size: 52px;
+  --pad: clamp(20px, 5vw, 36px);
+  width: min(420px, calc(100vw - 80px));
+  aspect-ratio: 420 / 540;
+  font-size: clamp(28px, 8vw, 52px);
 }
 
 .goal-card {

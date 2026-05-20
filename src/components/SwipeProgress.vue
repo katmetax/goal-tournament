@@ -64,4 +64,15 @@ const pad = (n: number) => String(n).padStart(2, '0')
   color: var(--keep);
   font-weight: 600;
 }
+
+@media (max-width: 480px) {
+  .progress {
+    gap: 10px;
+    padding: 6px 12px;
+  }
+
+  .bar {
+    display: none;
+  }
+}
 </style>

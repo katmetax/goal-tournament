@@ -108,10 +108,16 @@ textarea {
 }
 
 .home-nav {
-  position: fixed;
+  position: absolute;
   top: 24px;
   left: 20px;
   z-index: 100;
+}
+
+@media (max-width: 480px) {
+  .home-nav {
+    top: 16px;
+  }
 }
 
 .home-btn {

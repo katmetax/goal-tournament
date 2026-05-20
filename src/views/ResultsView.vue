@@ -78,14 +78,13 @@ function handleRestart() {
         :idx="indexFor(title)"
         :ordinal="i + 1"
         :delay="i * 0.1"
-        :large="count === 1"
       />
     </div>
 
     <div v-if="!readOnly" class="actions">
       <AppBtn kind="ghost" @click="handleRestart">↺ Start over</AppBtn>
       <AppBtn kind="accent" @click="handleShare">
-        {{ copied ? '✓ Copied link + list' : '↗ Share result' }}
+        {{ copied ? '✓ Copied' : '↗ Share result' }}
       </AppBtn>
     </div>
 
@@ -130,8 +129,8 @@ function handleRestart() {
 }
 
 .trophy-grid.single {
-  grid-template-columns: minmax(380px, 1fr);
-  max-width: 440px;
+  grid-template-columns: minmax(260px, 1fr);
+  max-width: 360px;
 }
 
 .actions {

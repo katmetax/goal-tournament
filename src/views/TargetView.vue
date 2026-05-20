@@ -69,7 +69,7 @@ function handleSubmit() {
 
 @media (max-width: 600px) {
   .screen {
-    padding: 40px 24px;
+    padding: 25px 24px;
     gap: 28px;
   }
 }

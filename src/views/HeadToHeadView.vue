@@ -117,7 +117,7 @@ onMounted(() => {
       <span class="eyebrow">Step 04 · Tournament · Round {{ round }}</span>
       <div class="alive-pill">
         <span
-          ><strong>{{ totalAlive }}</strong> alive</span
+          ><strong>{{ totalAlive }}</strong> to go</span
         >
         <span class="dot-sep">·</span>
         <span
@@ -297,6 +297,26 @@ onMounted(() => {
 }
 
 @media (max-width: 780px) {
+  .screen {
+    padding-top: 24px;
+  }
+
+  .top-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 0;
+    gap: 10px;
+  }
+
+  .eyebrow {
+    padding-left: 68px;
+    margin-bottom: 24px;
+  }
+
+  .alive-pill {
+    align-self: center;
+  }
+
   .versus-area {
     flex-direction: column;
     gap: 16px;
@@ -305,6 +325,17 @@ onMounted(() => {
 
   .vs {
     font-size: 36px;
+  }
+
+  :deep(.size-xl) {
+    aspect-ratio: 420 / 270;
+    font-size: clamp(18px, 5vw, 28px);
+  }
+}
+
+@media (max-width: 480px) {
+  .screen {
+    padding-top: 26px;
   }
 }
 </style>

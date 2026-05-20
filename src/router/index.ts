@@ -3,6 +3,7 @@ import { useJourneyStore } from '@/stores/journey'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
+  scrollBehavior: () => ({ top: 0 }),
   routes: [
     { path: '/', component: () => import('@/views/ModeSelectView.vue') },
     { path: '/custom', component: () => import('@/views/CustomInputView.vue') },

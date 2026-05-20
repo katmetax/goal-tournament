@@ -124,7 +124,7 @@ onUnmounted(() => window.removeEventListener('keydown', onKeyDown))
   <main class="screen">
     <div class="top-bar">
       <span class="eyebrow">Step 02 · Swipe phase</span>
-      <SwipeProgress :current="idx" :total="total" :kept="kept.length" />
+      <SwipeProgress class="swipe-progress" :current="idx" :total="total" :kept="kept.length" />
       <AppBtn class="undo-btn" kind="ghost" :disabled="!history.length" @click="undo">
         ↶ Undo
       </AppBtn>
@@ -285,5 +285,48 @@ onUnmounted(() => window.removeEventListener('keydown', onKeyDown))
   width: 160px;
   margin: 0;
   line-height: 1.5;
+}
+
+@media (max-width: 480px) {
+  .screen {
+    padding: 16px;
+    gap: 10px;
+  }
+
+  .top-bar {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    grid-template-areas:
+      '. eyebrow undo'
+      'progress progress progress';
+    align-items: center;
+    gap: 10px 8px;
+  }
+
+  .eyebrow {
+    grid-area: eyebrow;
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .undo-btn {
+    grid-area: undo;
+    justify-self: end;
+    position: static;
+  }
+
+  .swipe-progress {
+    grid-area: progress;
+    justify-self: center;
+  }
+
+  .card-area {
+    min-height: unset;
+  }
+
+  .action-bar {
+    gap: 16px;
+    padding-bottom: 4px;
+  }
 }
 </style>
