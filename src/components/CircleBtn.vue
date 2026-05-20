@@ -4,7 +4,6 @@ interface Props {
 }
 
 defineProps<Props>()
-defineEmits<{ click: [] }>()
 </script>
 
 <template>
