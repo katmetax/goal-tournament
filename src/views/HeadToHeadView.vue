@@ -181,6 +181,7 @@ onMounted(() => {
   align-items: center;
   flex-wrap: wrap;
   gap: 16px;
+  padding-left: 90px;
 }
 
 .eyebrow {

@@ -195,11 +195,10 @@ onUnmounted(() => window.removeEventListener('keydown', onKeyDown))
 }
 
 .top-bar {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
   gap: 16px;
-  flex-wrap: wrap;
 }
 
 .eyebrow {
@@ -208,6 +207,7 @@ onUnmounted(() => window.removeEventListener('keydown', onKeyDown))
   letter-spacing: 0.1em;
   color: var(--ink-soft);
   text-transform: uppercase;
+  padding-left: 90px;
 }
 
 .card-area {
@@ -225,6 +225,7 @@ onUnmounted(() => window.removeEventListener('keydown', onKeyDown))
 }
 
 .undo-btn {
+  justify-self: end;
   padding: 8px 14px;
   font-size: 13px;
 }

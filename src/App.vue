@@ -1,21 +1,54 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { decodeShareToken } from '@/utils/share'
+import { useJourneyStore } from '@/stores/journey'
 import ResultsView from '@/views/ResultsView.vue'
 
 const route = useRoute()
+const router = useRouter()
+const store = useJourneyStore()
 
 const sharedWinners = computed(() => {
   const r = route.query.r
   if (typeof r !== 'string') return null
   return decodeShareToken(r)
 })
+
+const showHomeNav = computed(
+  () => !sharedWinners.value && route.path !== '/' && route.path !== '/results',
+)
+
+function goHome() {
+  store.reset()
+  router.push('/')
+}
 </script>
 
 <template>
   <ResultsView v-if="sharedWinners" :winners="sharedWinners" :read-only="true" />
-  <RouterView v-else />
+  <template v-else>
+    <nav v-if="showHomeNav" class="home-nav" aria-label="Site navigation">
+      <button class="home-btn" @click="goHome">
+        <svg
+          class="home-icon"
+          aria-hidden="true"
+          viewBox="0 0 16 16"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1 6.5L8 1l7 5.5V15H10.5v-4h-5v4H1V6.5Z"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linejoin="round"
+          />
+        </svg>
+        <span class="sr-only">Home</span>
+      </button>
+    </nav>
+    <RouterView />
+  </template>
 </template>
 
 <style>
@@ -72,6 +105,64 @@ button {
 
 textarea {
   font-family: inherit;
+}
+
+.home-nav {
+  position: fixed;
+  top: 24px;
+  left: 20px;
+  z-index: 100;
+}
+
+.home-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: var(--bg-alt);
+  border: 1.5px solid var(--rule);
+  border-radius: var(--button-radius);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    color 0.15s,
+    border-color 0.15s,
+    background 0.15s;
+}
+
+.home-btn:hover,
+.home-btn:focus-visible {
+  color: var(--ink);
+  border-color: var(--ink-soft);
+  background: var(--bg);
+  outline: none;
+}
+
+.home-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.home-icon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 @keyframes popin {
