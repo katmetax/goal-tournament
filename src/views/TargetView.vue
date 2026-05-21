@@ -6,6 +6,7 @@ import AppHeader from '@/components/AppHeader.vue'
 import AppBtn from '@/components/AppBtn.vue'
 import GoalChip from '@/components/GoalChip.vue'
 import TargetSection from '@/components/TargetSection.vue'
+import PageTopBar from '@/components/PageTopBar.vue'
 
 const router = useRouter()
 const store = useJourneyStore()
@@ -22,8 +23,8 @@ function handleSubmit() {
 
 <template>
   <main class="screen">
+    <PageTopBar :eyebrow="`Step 03 · You kept ${kept.length} cards`" centered />
     <AppHeader
-      :eyebrow="`Step 03 · You kept ${kept.length} cards`"
       title="How many do you want to end up with?"
       subtitle="Set your target. We'll run a knockout tournament until only this many remain."
     />
@@ -50,7 +51,7 @@ function handleSubmit() {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 64px 48px;
+  padding: 24px 48px;
   gap: 40px;
 }
 
@@ -69,7 +70,7 @@ function handleSubmit() {
 
 @media (max-width: 600px) {
   .screen {
-    padding: 25px 24px;
+    padding: 16px 24px;
     gap: 28px;
   }
 }

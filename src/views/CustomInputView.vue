@@ -7,6 +7,7 @@ import { useJourneyStore } from '@/stores/journey'
 import AppHeader from '@/components/AppHeader.vue'
 import AppBtn from '@/components/AppBtn.vue'
 import GoalChip from '@/components/GoalChip.vue'
+import PageTopBar from '@/components/PageTopBar.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -42,8 +43,8 @@ function handleSubmit() {
 
 <template>
   <main class="screen">
+    <PageTopBar :eyebrow="eyebrow" centered />
     <AppHeader
-      :eyebrow="eyebrow"
       :title="title"
       subtitle="Separate with commas or newlines. We'll turn each one into a card."
     />
@@ -88,7 +89,7 @@ function handleSubmit() {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 64px 48px;
+  padding: 24px 48px;
   gap: 36px;
 }
 
@@ -158,7 +159,7 @@ function handleSubmit() {
 
 @media (max-width: 700px) {
   .screen {
-    padding: 40px 24px;
+    padding: 16px 24px;
   }
 
   .grid {

@@ -3,6 +3,7 @@ import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useJourneyStore } from '@/stores/journey'
 import GoalCard from '@/components/GoalCard.vue'
+import PageTopBar from '@/components/PageTopBar.vue'
 
 interface Card {
   title: string
@@ -113,18 +114,19 @@ onMounted(() => {
 
 <template>
   <main class="screen">
-    <div class="top-bar">
-      <span class="eyebrow">Step 04 · Tournament · Round {{ round }}</span>
-      <div class="alive-pill">
-        <span
-          ><strong>{{ totalAlive }}</strong> to go</span
-        >
-        <span class="dot-sep">·</span>
-        <span
-          >target <strong class="target-num">{{ target }}</strong></span
-        >
-      </div>
-    </div>
+    <PageTopBar :eyebrow="`Step 04 · Tournament · Round ${round}`" stack-right-on-mobile>
+      <template #right>
+        <div class="alive-pill">
+          <span
+            ><strong>{{ totalAlive }}</strong> to go</span
+          >
+          <span class="dot-sep">·</span>
+          <span
+            >target <strong class="target-num">{{ target }}</strong></span
+          >
+        </div>
+      </template>
+    </PageTopBar>
 
     <div v-if="activePair" class="versus-area">
       <button
@@ -170,26 +172,9 @@ onMounted(() => {
   font-family: var(--font-body);
   display: flex;
   flex-direction: column;
-  padding: 32px 24px;
+  padding: 24px;
   gap: 24px;
   position: relative;
-}
-
-.top-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 16px;
-  padding-left: 90px;
-}
-
-.eyebrow {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.1em;
-  color: var(--ink-soft);
-  text-transform: uppercase;
 }
 
 .alive-pill {
@@ -202,6 +187,7 @@ onMounted(() => {
   display: flex;
   gap: 14px;
   align-items: center;
+  margin-top: 25px;
 }
 
 .dot-sep {

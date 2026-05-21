@@ -7,7 +7,13 @@ import { useJourneyStore } from '@/stores/journey'
 
 const AppHeaderStub = {
   name: 'AppHeader',
-  props: ['eyebrow', 'title', 'subtitle'],
+  props: ['title', 'subtitle'],
+  template: '<div />',
+}
+
+const PageTopBarStub = {
+  name: 'PageTopBar',
+  props: ['eyebrow', 'centered', 'stackCenterOnMobile', 'stackRightOnMobile'],
   template: '<div><span data-testid="eyebrow">{{ eyebrow }}</span></div>',
 }
 
@@ -45,7 +51,12 @@ describe('TargetView', () => {
     return mount(TargetView, {
       global: {
         plugins: [router],
-        stubs: { AppHeader: AppHeaderStub, GoalChip: true, TargetSection: TargetSectionStub },
+        stubs: {
+          AppHeader: AppHeaderStub,
+          PageTopBar: PageTopBarStub,
+          GoalChip: true,
+          TargetSection: TargetSectionStub,
+        },
       },
     })
   }

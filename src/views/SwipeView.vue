@@ -6,6 +6,7 @@ import SwipeProgress from '@/components/SwipeProgress.vue'
 import AppBtn from '@/components/AppBtn.vue'
 import CircleBtn from '@/components/CircleBtn.vue'
 import GoalCard from '@/components/GoalCard.vue'
+import PageTopBar from '@/components/PageTopBar.vue'
 
 const router = useRouter()
 const store = useJourneyStore()
@@ -122,13 +123,16 @@ onUnmounted(() => window.removeEventListener('keydown', onKeyDown))
 
 <template>
   <main class="screen">
-    <div class="top-bar">
-      <span class="eyebrow">Step 02 · Swipe phase</span>
-      <SwipeProgress class="swipe-progress" :current="idx" :total="total" :kept="kept.length" />
-      <AppBtn class="undo-btn" kind="ghost" :disabled="!history.length" @click="undo">
-        ↶ Undo
-      </AppBtn>
-    </div>
+    <PageTopBar eyebrow="Step 02 · Swipe phase" :stack-center-on-mobile="true">
+      <template #center>
+        <SwipeProgress :current="idx" :total="total" :kept="kept.length" />
+      </template>
+      <template #right>
+        <AppBtn class="undo-btn" kind="ghost" :disabled="!history.length" @click="undo">
+          ↶ Undo
+        </AppBtn>
+      </template>
+    </PageTopBar>
 
     <div class="card-area">
       <div class="swipe-hint swipe-hint--left" :class="{ active: drag.x < -30 }" aria-hidden="true">
@@ -194,22 +198,6 @@ onUnmounted(() => window.removeEventListener('keydown', onKeyDown))
   position: relative;
 }
 
-.top-bar {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-  gap: 16px;
-}
-
-.eyebrow {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.1em;
-  color: var(--ink-soft);
-  text-transform: uppercase;
-  padding-left: 90px;
-}
-
 .card-area {
   flex: 1;
   position: relative;
@@ -225,7 +213,6 @@ onUnmounted(() => window.removeEventListener('keydown', onKeyDown))
 }
 
 .undo-btn {
-  justify-self: end;
   padding: 8px 14px;
   font-size: 13px;
 }
@@ -291,33 +278,6 @@ onUnmounted(() => window.removeEventListener('keydown', onKeyDown))
   .screen {
     padding: 16px;
     gap: 10px;
-  }
-
-  .top-bar {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    grid-template-areas:
-      '. eyebrow undo'
-      'progress progress progress';
-    align-items: center;
-    gap: 10px 8px;
-  }
-
-  .eyebrow {
-    grid-area: eyebrow;
-    padding-left: 0;
-    text-align: center;
-  }
-
-  .undo-btn {
-    grid-area: undo;
-    justify-self: end;
-    position: static;
-  }
-
-  .swipe-progress {
-    grid-area: progress;
-    justify-self: center;
   }
 
   .card-area {

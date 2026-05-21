@@ -8,7 +8,13 @@ import PREDEFINED_GOALS from '@/data/goals.json'
 
 const AppHeaderStub = {
   name: 'AppHeader',
-  props: ['eyebrow', 'title', 'subtitle'],
+  props: ['title', 'subtitle'],
+  template: '<div />',
+}
+
+const PageTopBarStub = {
+  name: 'PageTopBar',
+  props: ['eyebrow', 'centered', 'stackCenterOnMobile', 'stackRightOnMobile'],
   template: '<div><span data-testid="eyebrow">{{ eyebrow }}</span></div>',
 }
 
@@ -37,7 +43,7 @@ describe('CustomInputView', () => {
       wrapper: mount(CustomInputView, {
         global: {
           plugins: [router],
-          stubs: { AppHeader: AppHeaderStub, GoalChip: true },
+          stubs: { AppHeader: AppHeaderStub, PageTopBar: PageTopBarStub, GoalChip: true },
         },
       }),
       router,
