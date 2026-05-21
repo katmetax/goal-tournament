@@ -125,9 +125,8 @@ textarea {
   align-items: center;
   gap: 6px;
   padding: 8px 14px;
-  background: var(--bg-alt);
-  border: 1.5px solid var(--rule);
-  border-radius: var(--button-radius);
+  background: transparent;
+  border: none;
   font-family: var(--font-mono);
   font-size: 12px;
   letter-spacing: 0.08em;

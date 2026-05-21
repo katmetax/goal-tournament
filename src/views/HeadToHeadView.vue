@@ -187,7 +187,6 @@ onMounted(() => {
   display: flex;
   gap: 14px;
   align-items: center;
-  margin-top: 25px;
 }
 
 .dot-sep {
@@ -301,6 +300,7 @@ onMounted(() => {
 
   .alive-pill {
     align-self: center;
+    margin-top: 25px;
   }
 
   .versus-area {
