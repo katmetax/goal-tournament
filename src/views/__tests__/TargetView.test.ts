@@ -29,6 +29,7 @@ function makeRouter() {
   return createRouter({
     history: createMemoryHistory(),
     routes: [
+      { path: '/', component: { template: '<div />' } },
       { path: '/target', component: TargetView },
       { path: '/head-to-head', component: { template: '<div />' } },
       { path: '/swipe', component: { template: '<div />' } },

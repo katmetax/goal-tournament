@@ -10,6 +10,7 @@ function makeRouter() {
   return createRouter({
     history: createMemoryHistory(),
     routes: [
+      { path: '/', component: { template: '<div />' } },
       { path: '/head-to-head', component: HeadToHeadView },
       { path: '/results', component: { template: '<div />' } },
     ],
