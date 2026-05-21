@@ -103,7 +103,7 @@ describe('ResultsView', () => {
   })
 
   it('should copy share text to clipboard when share button is clicked', async () => {
-    const writeMock = vi.fn().mockResolvedValue(undefined)
+    const writeMock = vi.fn<(data: string) => Promise<void>>().mockResolvedValue(undefined)
     Object.assign(navigator, { clipboard: { writeText: writeMock } })
 
     const wrapper = mountWithWinners(['goal A', 'goal B'])
@@ -111,7 +111,7 @@ describe('ResultsView', () => {
     await wrapper.vm.$nextTick()
 
     expect(writeMock).toHaveBeenCalledOnce()
-    const written = writeMock.mock.calls[0]![0] as string
+    const written = writeMock.mock.calls[0]![0]
     expect(written).toContain('goal A')
     expect(written).toContain('goal B')
 
@@ -120,7 +120,7 @@ describe('ResultsView', () => {
   })
 
   it('should copy a numbered plain-text list followed by a share URL', async () => {
-    const writeMock = vi.fn().mockResolvedValue(undefined)
+    const writeMock = vi.fn<(data: string) => Promise<void>>().mockResolvedValue(undefined)
     Object.assign(navigator, { clipboard: { writeText: writeMock } })
 
     const winners = ['learn to surf', 'read 24 books', 'call mum']
@@ -128,7 +128,7 @@ describe('ResultsView', () => {
     await wrapper.find('button.btn--accent').trigger('click')
     await wrapper.vm.$nextTick()
 
-    const written = writeMock.mock.calls[0]![0] as string
+    const written = writeMock.mock.calls[0]![0]
     const token = encodeShareToken(winners)
     const expected = [
       'My top 3 goals:',
@@ -145,7 +145,9 @@ describe('ResultsView', () => {
   it('should change share button text to "Copied" after copying', async () => {
     vi.useFakeTimers()
     Object.assign(navigator, {
-      clipboard: { writeText: vi.fn().mockResolvedValue(undefined) },
+      clipboard: {
+        writeText: vi.fn<(data: string) => Promise<void>>().mockResolvedValue(undefined),
+      },
     })
     const wrapper = mountWithWinners(['goal A'])
     await wrapper.find('button.btn--accent').trigger('click')

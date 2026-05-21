@@ -179,6 +179,6 @@ describe('SwipeView', () => {
     const wrapper = mountWithDeck(['goal A', 'goal B'])
     wrapper.unmount()
     window.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight' }))
-    // No error thrown — listener cleanly removed
+    expect(store.deck).toHaveLength(2)
   })
 })
