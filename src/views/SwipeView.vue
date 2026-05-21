@@ -193,7 +193,7 @@ onUnmounted(() => window.removeEventListener('keydown', onKeyDown))
   font-family: var(--font-body);
   display: flex;
   flex-direction: column;
-  padding: 24px;
+  padding: 24px 0;
   gap: 16px;
   position: relative;
 }
@@ -205,6 +205,7 @@ onUnmounted(() => window.removeEventListener('keydown', onKeyDown))
   align-items: center;
   justify-content: center;
   min-height: 580px;
+  overflow: hidden;
 }
 
 .card-wrapper {
@@ -276,7 +277,7 @@ onUnmounted(() => window.removeEventListener('keydown', onKeyDown))
 
 @media (max-width: 480px) {
   .screen {
-    padding: 16px;
+    padding: 16px 0;
     gap: 10px;
   }
 
