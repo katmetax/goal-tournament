@@ -114,12 +114,6 @@ textarea {
   z-index: 100;
 }
 
-@media (max-width: 480px) {
-  .home-nav {
-    top: 16px;
-  }
-}
-
 .home-btn {
   display: flex;
   align-items: center;
@@ -168,6 +162,16 @@ textarea {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+@media (max-width: 480px) {
+  .home-nav {
+    top: 16px;
+  }
+
+  .home-btn {
+    padding: 8px 0;
+  }
 }
 
 @keyframes popin {

@@ -281,6 +281,12 @@ onMounted(() => {
   color: var(--ink-soft);
 }
 
+@media (min-width: 781px) {
+  :deep(.size-xl) {
+    width: min(420px, calc((100vw - 220px) / 2));
+  }
+}
+
 @media (max-width: 780px) {
   .screen {
     padding-top: 24px;
@@ -288,7 +294,7 @@ onMounted(() => {
 
   .top-bar {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     padding-left: 0;
     gap: 10px;
   }
@@ -300,7 +306,6 @@ onMounted(() => {
 
   .alive-pill {
     align-self: center;
-    margin-top: 25px;
   }
 
   .versus-area {
@@ -322,6 +327,14 @@ onMounted(() => {
 @media (max-width: 480px) {
   .screen {
     padding-top: 26px;
+  }
+
+  .top-bar {
+    align-items: flex-start;
+  }
+
+  .alive-pill {
+    margin-top: 25px;
   }
 }
 </style>

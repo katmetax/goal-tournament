@@ -290,4 +290,10 @@ onUnmounted(() => window.removeEventListener('keydown', onKeyDown))
     padding-bottom: 4px;
   }
 }
+
+@media (max-width: 375px) {
+  .card-area {
+    margin-top: -40px;
+  }
+}
 </style>
