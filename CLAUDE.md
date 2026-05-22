@@ -33,7 +33,7 @@ Guards check Pinia state (e.g. `/swipe` requires `deck.length > 0`). Users canno
 
 **Sharing** — [src/App.vue](src/App.vue) reads a `?r=` query param on load, decodes it via [src/utils/share.ts](src/utils/share.ts), and renders `ResultsView` in read-only mode. The rest of the router is bypassed.
 
-**Components** are purely presentational — no store access, no API calls. All data flows in via props. [src/components/GoalCard.vue](src/components/GoalCard.vue) is the central UI piece: it accepts a `size` prop (`sm | md | lg | xl`) and derives rotation, stamp state, and color from props/drag state.
+**Components** are purely presentational — no store access, no API calls. All data flows in via props. [src/components/GoalCard.vue](src/components/GoalCard.vue) is the central UI piece: it derives rotation, stamp state, and color from props/drag state.
 
 **SwipeView** ([src/views/SwipeView.vue](src/views/SwipeView.vue)) tracks pointer events with `setPointerCapture` for cross-device drag support, maintains an undo `history` array, and supports keyboard shortcuts (arrow keys + Cmd/Ctrl+Z).
 
