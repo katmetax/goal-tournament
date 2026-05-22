@@ -7,6 +7,9 @@
       <td><img src=".github/screenshots/Step_3_Target.png" alt="Screenshot of target selection page" /></td>
       <td><img src=".github/screenshots/Step_5_Results.png" alt="Screenshot of results page" /></td>
     </tr>
+    <tr>
+      <td colspan="3" align="center"><a href="https://goal-tournament.netlify.app/">https://goal-tournament.netlify.app</a></td>
+    </tr>
   </table>
 </div>
 
