@@ -129,4 +129,16 @@ const labelColor = computed(() => colorForCard(props.idx * 3 + 1))
 .preview-chip:nth-child(3) {
   transform: rotate(2deg);
 }
+
+@media (max-width: 780px) {
+  .mode-card {
+    min-height: auto;
+    padding: 16px;
+    gap: 10px;
+  }
+
+  .title {
+    font-size: 22px;
+  }
+}
 </style>

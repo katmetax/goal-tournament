@@ -12,6 +12,13 @@ const ModeCardStub = {
   template: '<button @click="$emit(\'click\')" :data-id="mode.id">{{ mode.label }}</button>',
 }
 
+const HowItWorksModalStub = {
+  name: 'HowItWorksModal',
+  emits: ['close'],
+  template:
+    '<div data-testid="how-it-works-modal"><button @click="$emit(\'close\')">Close</button></div>',
+}
+
 function makeRouter() {
   return createRouter({
     history: createMemoryHistory(),
@@ -35,7 +42,7 @@ describe('ModeSelectView', () => {
     return mount(ModeSelectView, {
       global: {
         plugins: [router],
-        stubs: { AppHeader: true, ModeCard: ModeCardStub },
+        stubs: { AppHeader: true, ModeCard: ModeCardStub, HowItWorksModal: HowItWorksModalStub },
       },
     })
   }
@@ -80,5 +87,25 @@ describe('ModeSelectView', () => {
   it('should show the step indicator footer', () => {
     const wrapper = mountView()
     expect(wrapper.text()).toContain('STEP 01')
+  })
+
+  it('should render the help button', () => {
+    const wrapper = mountView()
+    expect(wrapper.find('[aria-label="How does this work?"]').exists()).toBe(true)
+  })
+
+  it('should show the modal when the help button is clicked', async () => {
+    const wrapper = mountView()
+    expect(wrapper.find('[data-testid="how-it-works-modal"]').exists()).toBe(false)
+    await wrapper.find('[aria-label="How does this work?"]').trigger('click')
+    expect(wrapper.find('[data-testid="how-it-works-modal"]').exists()).toBe(true)
+  })
+
+  it('should hide the modal when it emits close', async () => {
+    const wrapper = mountView()
+    await wrapper.find('[aria-label="How does this work?"]').trigger('click')
+    expect(wrapper.find('[data-testid="how-it-works-modal"]').exists()).toBe(true)
+    await wrapper.find('[data-testid="how-it-works-modal"] button').trigger('click')
+    expect(wrapper.find('[data-testid="how-it-works-modal"]').exists()).toBe(false)
   })
 })
