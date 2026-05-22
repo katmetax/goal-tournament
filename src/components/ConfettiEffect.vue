@@ -68,7 +68,7 @@ const pieces: Piece[] = Array.from({ length: COUNT }, (_, i) => {
 
 <style scoped>
 .confetti {
-  position: absolute;
+  position: fixed;
   inset: 0;
   pointer-events: none;
   overflow: hidden;
