@@ -17,14 +17,14 @@ const MODES = [
     label: 'Pre-defined',
     title: 'Start from the library',
     subtitle: 'A curated deck of 20 common goals.',
-    preview: ['Travel more', 'Read 24 books', 'Run a marathon'],
+    preview: ['Learn Dutch', 'Get AWS certified', 'Mentor a junior colleague'],
   },
   {
     id: 'custom',
     label: 'Your own',
     title: 'Type your own goals',
     subtitle: 'Paste or write a list. We split on commas + newlines.',
-    preview: ['ship v2', 'sleep at 11', 'call mum'],
+    preview: ['learn how to make mermaid graphs', 'teach Claude how to code', 'live laugh love'],
   },
   {
     id: 'mixed',
