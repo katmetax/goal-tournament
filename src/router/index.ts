@@ -12,6 +12,7 @@ const router = createRouter({
     { path: '/target', component: () => import('@/views/TargetView.vue') },
     { path: '/head-to-head', component: () => import('@/views/HeadToHeadView.vue') },
     { path: '/results', component: ResultsView },
+    { path: '/:pathMatch(.*)*', component: () => import('@/views/NotFoundView.vue') },
   ],
 })
 
