@@ -1,5 +1,16 @@
 # Goal Tournament
 
+<div align="center">
+  <table>
+    <tr>
+      <td><img src=".github/screenshots/Step_1_Homepage.png" alt="Screenshot of homepage" /></td>
+      <td><img src=".github/screenshots/Step_3_Target.png" alt="Screenshot of target selection page" /></td>
+      <td><img src=".github/screenshots/Step_5_Results.png" alt="Screenshot of results page" /></td>
+    </tr>
+  </table>
+</div>
+
+
 A tool for cutting through the noise when you have too many goals and not enough clarity. Start with a big pile of ambitions, swipe away the noise, then run a head-to-head bracket to surface the ones that truly matter.
 
 Built for anyone who has ever written a list of goals and felt overwhelmed — the self-improver, the planner, the person staring at twelve things and not knowing where to start.
