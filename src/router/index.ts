@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { useJourneyStore } from '@/stores/journey'
+import ResultsView from '@/views/ResultsView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -10,7 +11,7 @@ const router = createRouter({
     { path: '/swipe', component: () => import('@/views/SwipeView.vue') },
     { path: '/target', component: () => import('@/views/TargetView.vue') },
     { path: '/head-to-head', component: () => import('@/views/HeadToHeadView.vue') },
-    { path: '/results', component: () => import('@/views/ResultsView.vue') },
+    { path: '/results', component: ResultsView },
   ],
 })
 
