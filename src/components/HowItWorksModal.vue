@@ -83,7 +83,7 @@ onUnmounted(() => {
         </ol>
 
         <div class="footer">
-          <div class="esc-hint">Press <kbd>Esc</kbd> to close</div>
+          <div class="esc-hint hide-on-mobile">Press <kbd>Esc</kbd> to close</div>
           <button class="got-it-btn" @click="emit('close')">Got it</button>
         </div>
       </div>
@@ -321,6 +321,10 @@ kbd {
 
   .heading {
     font-size: 28px;
+  }
+
+  .hide-on-mobile {
+    opacity: 0;
   }
 }
 
