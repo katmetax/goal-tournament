@@ -15,11 +15,6 @@ import { RouterLink } from 'vue-router'
 
 <style scoped>
 .screen {
-  min-height: 100vh;
-  background: var(--bg);
-  color: var(--ink);
-  font-family: var(--font-body);
-  display: flex;
   align-items: center;
   justify-content: center;
   padding: 48px 24px;

@@ -33,11 +33,7 @@ defineProps<{
 }
 
 .eyebrow {
-  font-family: var(--font-mono);
-  font-size: 12px;
   letter-spacing: 0.1em;
-  color: var(--ink-soft);
-  text-transform: uppercase;
   padding-left: 90px;
 }
 

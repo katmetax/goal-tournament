@@ -82,12 +82,6 @@ function handleSubmit() {
 
 <style scoped>
 .screen {
-  min-height: 100vh;
-  background: var(--bg);
-  color: var(--ink);
-  font-family: var(--font-body);
-  display: flex;
-  flex-direction: column;
   align-items: center;
   padding: 24px 48px;
   gap: 36px;
@@ -150,11 +144,6 @@ function handleSubmit() {
   padding: 8px;
   opacity: 0.6;
   margin: 0;
-}
-
-.actions {
-  display: flex;
-  gap: 12px;
 }
 
 @media (max-width: 700px) {

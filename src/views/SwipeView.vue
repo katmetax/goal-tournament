@@ -187,12 +187,6 @@ onUnmounted(() => window.removeEventListener('keydown', onKeyDown))
 
 <style scoped>
 .screen {
-  min-height: 100vh;
-  background: var(--bg);
-  color: var(--ink);
-  font-family: var(--font-body);
-  display: flex;
-  flex-direction: column;
   padding: 24px 0;
   gap: 16px;
   position: relative;

@@ -166,12 +166,6 @@ onMounted(() => {
 
 <style scoped>
 .screen {
-  min-height: 100vh;
-  background: var(--bg);
-  color: var(--ink);
-  font-family: var(--font-body);
-  display: flex;
-  flex-direction: column;
   padding: 24px;
   gap: 24px;
   position: relative;

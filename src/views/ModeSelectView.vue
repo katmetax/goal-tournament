@@ -84,12 +84,6 @@ function handleSelect(id: string) {
 <style scoped>
 .screen {
   position: relative;
-  min-height: 100vh;
-  background: var(--bg);
-  color: var(--ink);
-  font-family: var(--font-body);
-  display: flex;
-  flex-direction: column;
   align-items: center;
   padding: 64px 48px;
   gap: 48px;

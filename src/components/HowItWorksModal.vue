@@ -155,11 +155,6 @@ onUnmounted(() => {
 }
 
 .eyebrow {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.18em;
-  color: var(--ink-soft);
-  text-transform: uppercase;
   margin-bottom: 10px;
 }
 

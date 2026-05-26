@@ -96,12 +96,6 @@ function handleRestart() {
 
 <style scoped>
 .screen {
-  min-height: 100vh;
-  background: var(--bg);
-  color: var(--ink);
-  font-family: var(--font-body);
-  display: flex;
-  flex-direction: column;
   align-items: center;
   padding: 64px 48px;
   gap: 48px;
@@ -134,8 +128,6 @@ function handleRestart() {
 }
 
 .actions {
-  display: flex;
-  gap: 12px;
   flex-wrap: wrap;
   justify-content: center;
   position: relative;

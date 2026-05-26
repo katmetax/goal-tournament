@@ -26,14 +26,6 @@ defineProps<Props>()
   align-items: center;
 }
 
-.eyebrow {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.18em;
-  color: var(--ink-soft);
-  text-transform: uppercase;
-}
-
 .title {
   font-family: var(--font-display);
   font-size: clamp(40px, 6vw, 76px);
