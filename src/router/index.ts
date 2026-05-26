@@ -1,18 +1,24 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { useJourneyStore } from '@/stores/journey'
+import ModeSelectView from '@/views/ModeSelectView.vue'
+import CustomInputView from '@/views/CustomInputView.vue'
+import SwipeView from '@/views/SwipeView.vue'
+import TargetView from '@/views/TargetView.vue'
+import HeadToHeadView from '@/views/HeadToHeadView.vue'
 import ResultsView from '@/views/ResultsView.vue'
+import NotFoundView from '@/views/NotFoundView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   scrollBehavior: () => ({ top: 0 }),
   routes: [
-    { path: '/', component: () => import('@/views/ModeSelectView.vue') },
-    { path: '/custom', component: () => import('@/views/CustomInputView.vue') },
-    { path: '/swipe', component: () => import('@/views/SwipeView.vue') },
-    { path: '/target', component: () => import('@/views/TargetView.vue') },
-    { path: '/head-to-head', component: () => import('@/views/HeadToHeadView.vue') },
+    { path: '/', component: ModeSelectView },
+    { path: '/custom', component: CustomInputView },
+    { path: '/swipe', component: SwipeView },
+    { path: '/target', component: TargetView },
+    { path: '/head-to-head', component: HeadToHeadView },
     { path: '/results', component: ResultsView },
-    { path: '/:pathMatch(.*)*', component: () => import('@/views/NotFoundView.vue') },
+    { path: '/:pathMatch(.*)*', component: NotFoundView },
   ],
 })
 
